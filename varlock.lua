@@ -16,6 +16,7 @@ end
 local curl = function(url, output)
     str = "curl " .. url .. " -o " .. output
     os.execute(str)
+    print(str)
 end
 
 local hollow = function(repos, dirs)
@@ -39,7 +40,8 @@ local catppuccin_rice = function(format)
     local minimal = function()
         packages = {"cava", "neofetch", "kitty", "xorg", "xorg-xinit", "git", "base-devel", "dmenu"}
         repos = {"https://github.com/kavulox/dwm"}
-        curl("https://raw.githubusercontent.com/catppuccin/wallpapers/main/waves/cat-blue-eye.png", "~/.wallpaper.png") 
+        curl("https://raw.githubusercontent.com/catppuccin/wallpapers/main/waves/cat-blue-eye.png", ".wallpaper.png") 
+        os.execute("mv .wallpaper.png $HOME/.wallpaper.png")
         install_packages(packages, "-Syu --noconfirm")
         hollow(repos, {"/usr/src/dwm"})
         make_dir({"/usr/src/dwm/"}, "clean install")
