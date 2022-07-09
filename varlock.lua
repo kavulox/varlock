@@ -40,11 +40,12 @@ local catppuccin_rice = function(format)
     local minimal = function()
         packages = {"cava", "neofetch", "kitty", "xorg", "xorg-xinit", "git", "base-devel", "dmenu"}
         repos = {"https://github.com/kavulox/dwm"}
+        install_packages(packages, "-Syu --noconfirm")
+        hollow(repos, {"/usr/src/dwm/"})
+        make_dir({"/usr/src/dwm/"}, "clean install")
+        os.execute("exit")
         curl("https://raw.githubusercontent.com/catppuccin/wallpapers/main/waves/cat-blue-eye.png", ".wallpaper.png") 
         os.execute("mv .wallpaper.png $HOME/.wallpaper.png")
-        install_packages(packages, "-Syu --noconfirm")
-        hollow(repos, {"/usr/src/dwm"})
-        make_dir({"/usr/src/dwm/"}, "clean install")
     end
     local full = function()
         print("Not currently implemented.")
