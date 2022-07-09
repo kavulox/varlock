@@ -48,9 +48,10 @@ local catppuccin_rice = function(format, xinit)
         repos = {"https://github.com/kavulox/dwm"}
         install_packages(packages, "-Syu --noconfirm")
         hollow(repos, {"/usr/src/dwm/"}, "sudo ")
-        make_dir({"/usr/src/dwm/"}, "clean install",)
+        make_dir({"/usr/src/dwm/"}, "clean install")
         os.execute("mkdir -p ~/.config/picom/")
-        curl({"https://raw.githubusercontent.com/catppuccin/wallpapers/main/waves/cat-blue-eye.png", "https://raw.githubusercontent.com/yshui/picom/next/picom.sample.conf"}, {"~/.wallpaper.png", "~/.config/picom/picom.conf"}, "sudo ") 
+        curl({"https://raw.githubusercontent.com/catppuccin/wallpapers/main/waves/cat-blue-eye.png"}, {"~/.wallpaper.png"}) 
+        curl({"https://raw.githubusercontent.com/yshui/picom/next/picom.sample.conf"}, {"~/.config/picom/picom.conf"})
         if xinit == "true" then
             os.execute("echo \"feh --bg-scale ~/.wallpaper.png\" >> ~/.xinitrc && echo 'Made template at ~/.xinitrc'")
         else
